@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+
 namespace GP.WebApi.Models
 {
     public class Produto
@@ -21,5 +23,6 @@ namespace GP.WebApi.Models
         public bool Situacao { get; set; }
         public DateTime DataFabricacao { get; set; }
         public DateTime DataValidade { get; set; }
+        public IEnumerable<ProdutoFornecedor> ProdutosFornecedores { get; set; }
     }
 }

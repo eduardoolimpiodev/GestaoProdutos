@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace GP.WebApi.Models
 {
     public class Fornecedor
@@ -5,11 +7,22 @@ namespace GP.WebApi.Models
     {
         public Fornecedor() { }
 
+        public Fornecedor(int id, string nome, string descricao, string cNPJ, int produtoId, Produto produto)
+        {
+            this.Id = id;
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.CNPJ = cNPJ;
+            this.ProdutoId = produtoId;
+
+        }
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string CNPJ { get; set; }
 
-        
+        public int ProdutoId { get; set; }
+        public Produto Produto { get; set; }
+        public IEnumerable<ProdutoFornecedor> ProdutosFornecedores { get; set; }
     }
 }
