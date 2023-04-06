@@ -39,7 +39,7 @@ namespace GP.WebApi
             //app.UseHttpsRedirection();
 
             app.UseRouting();
-            // teste branch
+            // teste branch1
             //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
