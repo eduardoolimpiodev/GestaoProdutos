@@ -16,3 +16,10 @@ C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\obj\Debug\netcoreapp3.1\static
 C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\obj\Debug\netcoreapp3.1\staticwebassets\GP.WebApi.StaticWebAssets.xml
 C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\obj\Debug\netcoreapp3.1\GP.WebApi.dll
 C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\obj\Debug\netcoreapp3.1\GP.WebApi.pdb
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\obj\Debug\netcoreapp3.1\GP.WebApi.csproj.CopyComplete
