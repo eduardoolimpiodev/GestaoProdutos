@@ -93,7 +93,7 @@ namespace GP.WebApi.Controllers
            return Ok(produto);
         }
 
-        [HttpPut("{id}")]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
            return Ok();
