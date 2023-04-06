@@ -87,6 +87,12 @@ namespace GP.WebApi.Controllers
            return Ok(produto);
         }
 
+        [HttpPatch("{id}")]
+        public IActionResult Patch(int id, Produto produto)
+        {
+           return Ok(produto);
+        }
+
         [HttpPut("{id}")]
         public IActionResult Delete(int id)
         {
