@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GP.WebApi.Data;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GP.WebApi.Controllers
 {
@@ -10,48 +12,25 @@ namespace GP.WebApi.Controllers
     [Route("api/[controller]")]
     public class ProdutoController : ControllerBase
     {
-        public List<Produto> Produtos = new List<Produto> () {
-            new Produto() {
-            Id = 1,
-            Nome = "Arroz 1Kg",
-            Descricao = "Arroz Japonês",
-            Marca = "Sepe",
-            Situacao = "Ativo",
-            DataFabricacao = DateTime.Now,
-            DataValidade = DateTime.Now,
-            },
-            new Produto() {
-            Id = 2,
-            Nome = "Feijão 1Kg",
-            Descricao = "Feijão Preto",
-            Marca = "ComBrasil",
-            Situacao = "Inativo",
-            DataFabricacao = DateTime.Now,
-            DataValidade = DateTime.Now,
-            },
-            new Produto() {
-            Id = 3,
-            Nome = "Picanha a vácuo 1Kg",
-            Descricao = "Picanha a Vácuo",
-            Marca = "Do Lula",
-            Situacao = "Ativo",
-            DataFabricacao = DateTime.Now,
-            DataValidade = DateTime.Now,
-            },
-        };
-        public ProdutoController() { }
+        private readonly DataContext _context;
+        public readonly IRepository _repo;
 
+        public ProdutoController(DataContext context, IRepository repo)
+        {
+            _repo = repo;
+            _context = context;
+        }
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Produtos);
+            return Ok(_context.Produtos);
         }
 
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var produto = Produtos.FirstOrDefault(prod => prod.Id == id);
+            var produto = _context.Produtos.FirstOrDefault(prod => prod.Id == id);
             if (produto == null) return BadRequest("Produto não encontrado.");
             return Ok(produto);
         }
@@ -60,7 +39,7 @@ namespace GP.WebApi.Controllers
         [HttpGet("byId")]
         public IActionResult QueryStringGetById(int id)
         {
-            var produto = Produtos.FirstOrDefault(prod => prod.Id == id);
+            var produto = _context.Produtos.FirstOrDefault(prod => prod.Id == id);
             if (produto == null) return BadRequest("Produto não encontrado.");
             return Ok(produto);
         }
@@ -69,7 +48,7 @@ namespace GP.WebApi.Controllers
         [HttpGet("ByName")]
         public IActionResult GetByName(string nome, string marca)
         {
-            var produto = Produtos.FirstOrDefault(prod => prod.Nome.Contains(nome)
+            var produto = _context.Produtos.FirstOrDefault(prod => prod.Nome.Contains(nome)
             && prod.Marca.Contains(marca));
             if (produto == null) return BadRequest("Produto não encontrado.");
             return Ok(produto);
@@ -78,25 +57,44 @@ namespace GP.WebApi.Controllers
         [HttpPost]
         public IActionResult Post(Produto produto)
         {
-           return Ok(produto);
+            _repo.Add(produto);
+
+           if (_repo.SaveChanges())
+           {
+                 return Ok(produto);
+           }
+
+           return BadRequest("Produto não cadastrado.");
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, Produto produto)
         {
-           return Ok(produto);
+            var prod = _context.Produtos.AsNoTracking().FirstOrDefault(prod => prod.Id == id);
+            if (prod == null) return BadRequest("Produto não encontrado.");
+            _context.Update(produto);
+            _context.SaveChanges();
+            return Ok(produto);
         }
 
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Produto produto)
         {
-           return Ok(produto);
+            var prod = _context.Produtos.AsNoTracking().FirstOrDefault(prod => prod.Id == id);
+            if (prod == null) return BadRequest("Produto não encontrado.");
+            _context.Update(produto);
+            _context.SaveChanges();
+            return Ok(produto);
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-           return Ok();
+            var produto = _context.Produtos.FirstOrDefault(prod => prod.Id == id);
+            if (produto == null) return BadRequest("Produto não encontrado.");
+            _context.Remove(produto);
+            _context.SaveChanges();
+            return Ok(produto);
         }
 
     }
