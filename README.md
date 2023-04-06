@@ -31,3 +31,6 @@ dotnet new sln -n GP
 
 Add project in solution:
 dotnet sln GP.sln add GP.WebAPI/GP.WebApi.csproj
+
+Add Migrations:
+dotnet ef migrations add firstMigration
