@@ -21,14 +21,6 @@ namespace GP.WebApi.Controllers
             _context = context;
         }
 
-        [HttpGet("pegaresposta")]
-        public IActionResult pegaResposta()
-        {
-            return Ok(_repo.pegaResposta());
-        }
-
-
-
         [HttpGet]
         public IActionResult Get()
         {
@@ -65,9 +57,14 @@ namespace GP.WebApi.Controllers
         [HttpPost]
         public IActionResult Post(Produto produto)
         {
-            _context.Add(produto);
-            _context.SaveChanges();
-            return Ok(produto);
+            _repo.Add(produto);
+
+           if (_repo.SaveChanges())
+           {
+                 return Ok(produto);
+           }
+
+           return BadRequest("Produto não cadastrado.");
         }
 
         [HttpPut("{id}")]

@@ -11,9 +11,13 @@ namespace GP.WebApi.Controllers
     public class RepresentanteController : ControllerBase
     {
         private readonly DataContext _context;
-        public RepresentanteController(DataContext context)
+
+        public readonly IRepository _repo;
+
+        public RepresentanteController(DataContext context, IRepository repo)
         {
             _context = context;
+            _repo = repo;
 
         }
 
@@ -46,9 +50,16 @@ namespace GP.WebApi.Controllers
         [HttpPost]
         public IActionResult Post(Representante representante)
         {
-            _context.Add(representante);
-            _context.SaveChanges();
-            return Ok(representante);
+            _repo.Add(representante);
+
+           if (_repo.SaveChanges())
+           {
+                 return Ok(representante);
+           }
+
+           return BadRequest("Representante não cadastrado.");
+
+            
         }
 
         [HttpPut("{id}")]
@@ -57,9 +68,14 @@ namespace GP.WebApi.Controllers
             var repre = _context.Representantes.AsNoTracking().FirstOrDefault(repre => repre.Id == id);
             if(repre == null) return BadRequest("Representante não encontrado.");
 
-            _context.Update(representante);
-            _context.SaveChanges();
-            return Ok(representante);
+            _repo.Update(representante);
+
+           if (_repo.SaveChanges())
+           {
+                 return Ok(representante);
+           }
+
+           return BadRequest("Representante não atualizado.");
         }
 
         [HttpPatch("{id}")]
@@ -68,19 +84,30 @@ namespace GP.WebApi.Controllers
             var repre = _context.Representantes.AsNoTracking().FirstOrDefault(repre => repre.Id == id);
             if(repre == null) return BadRequest("Representante não encontrado.");
 
-            _context.Update(representante);
-            _context.SaveChanges();
-            return Ok(representante);
+            _repo.Update(representante);
+
+           if (_repo.SaveChanges())
+           {
+                 return Ok(representante);
+           }
+
+           return BadRequest("Representante não atualizado.");
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var Representante = _context.Representantes.FirstOrDefault(repre => repre.Id == id);
-            if(Representante == null) return BadRequest("Representante não encontrado.");
-            _context.Remove(Representante);
-            _context.SaveChanges();
-            return Ok();
+            var repre = _context.Representantes.FirstOrDefault(repre => repre.Id == id);
+            if(repre == null) return BadRequest("Representante não encontrado.");
+            
+            _repo.Delete(repre);
+
+           if (_repo.SaveChanges())
+           {
+                 return Ok("Representante deletado.");
+           }
+
+           return BadRequest("Representante não deletado.");
         }
 
     }
