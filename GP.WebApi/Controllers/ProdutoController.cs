@@ -13,13 +13,19 @@ namespace GP.WebApi.Controllers
     public class ProdutoController : ControllerBase
     {
         private readonly DataContext _context;
+        public readonly IRepository _repo;
 
-        public ProdutoController(DataContext context)
+        public ProdutoController(DataContext context, IRepository repo)
         {
+            _repo = repo;
             _context = context;
         }
 
-
+        [HttpGet("pegaresposta")]
+        public IActionResult pegaResposta()
+        {
+            return Ok(_repo.pegaResposta());
+        }
 
 
 
@@ -68,7 +74,7 @@ namespace GP.WebApi.Controllers
         public IActionResult Put(int id, Produto produto)
         {
             var prod = _context.Produtos.AsNoTracking().FirstOrDefault(prod => prod.Id == id);
-            if(prod == null) return BadRequest("Produto não encontrado.");
+            if (prod == null) return BadRequest("Produto não encontrado.");
             _context.Update(produto);
             _context.SaveChanges();
             return Ok(produto);
@@ -78,7 +84,7 @@ namespace GP.WebApi.Controllers
         public IActionResult Patch(int id, Produto produto)
         {
             var prod = _context.Produtos.AsNoTracking().FirstOrDefault(prod => prod.Id == id);
-            if(prod == null) return BadRequest("Produto não encontrado.");
+            if (prod == null) return BadRequest("Produto não encontrado.");
             _context.Update(produto);
             _context.SaveChanges();
             return Ok(produto);
@@ -88,7 +94,7 @@ namespace GP.WebApi.Controllers
         public IActionResult Delete(int id)
         {
             var produto = _context.Produtos.FirstOrDefault(prod => prod.Id == id);
-            if(produto == null) return BadRequest("Produto não encontrado.");
+            if (produto == null) return BadRequest("Produto não encontrado.");
             _context.Remove(produto);
             _context.SaveChanges();
             return Ok(produto);
