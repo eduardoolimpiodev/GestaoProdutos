@@ -8,10 +8,7 @@ namespace GP.WebApi.Models
         public Produto() { }
 
 
-
-
-
-        public Produto(int id, string nome, string descricao, string marca, string situacao, DateTime dataFabricacao, DateTime dataValidade)
+        public Produto(int id, string nome, string descricao, string marca, string situacao, string dataFabricacao, string dataValidade)
         {
             this.Id = id;
             this.Nome = nome;
@@ -27,8 +24,8 @@ namespace GP.WebApi.Models
         public string Descricao { get; set; }
         public string Marca { get; set; }
         public string Situacao { get; set; }
-        public DateTime DataFabricacao { get; set; }
-        public DateTime DataValidade { get; set; }
+        public string DataFabricacao { get; set; }
+        public string DataValidade { get; set; }
         public IEnumerable<ProdutoFornecedor> ProdutosFornecedores { get; set; }
     }
 }
