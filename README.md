@@ -25,3 +25,9 @@ dotnet ef migrations add Init
 
 Add SqLite Database:
 dotnet ef database update
+
+Create Solution:
+dotnet new sln -n GP
+
+Add project in solution:
+dotnet sln GP.sln add GP.WebAPI/GP.WebApi.csproj
