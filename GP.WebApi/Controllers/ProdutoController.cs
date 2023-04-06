@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -46,5 +47,51 @@ namespace GP.WebApi.Controllers
         {
             return Ok(Produtos);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            var produto = Produtos.FirstOrDefault(prod => prod.Id == id);
+            if (produto == null) return BadRequest("Produto não encontrado.");
+            return Ok(produto);
+        }
+
+        //Query String  api/produto/byid?id=1
+        [HttpGet("byId")]
+        public IActionResult QueryStringGetById(int id)
+        {
+            var produto = Produtos.FirstOrDefault(prod => prod.Id == id);
+            if (produto == null) return BadRequest("Produto não encontrado.");
+            return Ok(produto);
+        }
+
+        // byName?nome=Arroz 1Kg&marca=Sepe   
+        [HttpGet("ByName")]
+        public IActionResult GetByName(string nome, string marca)
+        {
+            var produto = Produtos.FirstOrDefault(prod => prod.Nome.Contains(nome)
+            && prod.Marca.Contains(marca));
+            if (produto == null) return BadRequest("Produto não encontrado.");
+            return Ok(produto);
+        }
+
+        [HttpPost]
+        public IActionResult Post(Produto produto)
+        {
+           return Ok(produto);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Produto produto)
+        {
+           return Ok(produto);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Delete(int id)
+        {
+           return Ok();
+        }
+
     }
 }
