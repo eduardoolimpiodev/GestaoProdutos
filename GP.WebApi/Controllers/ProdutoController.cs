@@ -22,8 +22,25 @@ namespace GP.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllProdutos(true);
-            return Ok(result);
+            var produtos = _repo.GetAllProdutos(true);
+            var produtosRetorno = new List<ProdutoDto>();
+
+            foreach (var produto in produtos)
+            {
+                produtosRetorno.Add(new ProdutoDto(){
+                    Id = produto.Id,
+                    Nome = produto.Nome,
+                    Codigo = produto.Codigo,
+                    Descricao = produto.Descricao,
+                    Peso = produto.Peso,
+                    Marca = produto.Marca,
+                    Situacao = produto.Situacao,
+                    DataFabricacao = produto.DataFabricacao,
+                    DataValidade = produto.DataValidade,
+                });
+            }
+
+            return Ok(produtosRetorno);
         }
 
         [HttpGet("{id}")]
