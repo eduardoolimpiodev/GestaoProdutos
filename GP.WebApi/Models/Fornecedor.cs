@@ -24,6 +24,8 @@ namespace GP.WebApi.Models
 
         public int RepresentanteId { get; set; }
         public Representante Representante { get; set; }
+        public int PedidoId { get; set; }
+        public Pedido Pedido { get; set; }
         public IEnumerable<ProdutoFornecedor> ProdutosFornecedores { get; set; }
     }
 }
