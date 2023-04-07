@@ -29,11 +29,11 @@ namespace GP.WebApi.Data
             
             builder.Entity<Fornecedor>()
                 .HasData(new List<Fornecedor>{
-                    new Fornecedor(1, "Matemática", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 1, 1),
-                    new Fornecedor(2, "Física", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 2, 2),
-                    new Fornecedor(3, "Português", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 3, 3),
-                    new Fornecedor(4, "Inglês", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 4, 4),
-                    new Fornecedor(5, "Programação", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 5, 5),
+                    new Fornecedor(1, "Matemática", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 1),
+                    new Fornecedor(2, "Física", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 2),
+                    new Fornecedor(3, "Português", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 3),
+                    new Fornecedor(4, "Inglês", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 4),
+                    new Fornecedor(5, "Programação", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 5),
                 });
             
             builder.Entity<Produto>()

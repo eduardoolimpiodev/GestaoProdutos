@@ -42,7 +42,8 @@ namespace GP.WebApi.Data
             {
                 query = query.Include(produto => produto.ProdutosFornecedores)
                              .ThenInclude( prod => prod.Fornecedor)
-                             .ThenInclude( forne => forne.RepresentanteId);
+                             .ThenInclude( forne => forne.Representante);
+                            
             }
 
             query = query.AsNoTracking().OrderBy( prod => prod.Id);

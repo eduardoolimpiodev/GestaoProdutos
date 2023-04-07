@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GP.WebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230406150341_tree")]
+    [Migration("20230407174132_tree")]
     partial class tree
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,15 +32,10 @@ namespace GP.WebApi.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("ProdutoId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("RepresentanteId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProdutoId");
 
                     b.HasIndex("RepresentanteId");
 
@@ -53,7 +48,6 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Matemática",
-                            ProdutoId = 1,
                             RepresentanteId = 1
                         },
                         new
@@ -62,7 +56,6 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Física",
-                            ProdutoId = 2,
                             RepresentanteId = 2
                         },
                         new
@@ -71,7 +64,6 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Português",
-                            ProdutoId = 3,
                             RepresentanteId = 3
                         },
                         new
@@ -80,7 +72,6 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Inglês",
-                            ProdutoId = 4,
                             RepresentanteId = 4
                         },
                         new
@@ -89,7 +80,6 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Programação",
-                            ProdutoId = 5,
                             RepresentanteId = 5
                         });
                 });
@@ -378,13 +368,7 @@ namespace GP.WebApi.Migrations
 
             modelBuilder.Entity("GP.WebApi.Models.Fornecedor", b =>
                 {
-                    b.HasOne("GP.WebApi.Models.Produto", "Produto")
-                        .WithMany()
-                        .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GP.WebApi.Models.Representante", null)
+                    b.HasOne("GP.WebApi.Models.Representante", "Representante")
                         .WithMany("Fornecedores")
                         .HasForeignKey("RepresentanteId")
                         .OnDelete(DeleteBehavior.Cascade)

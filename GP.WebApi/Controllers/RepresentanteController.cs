@@ -25,27 +25,36 @@ namespace GP.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_context.Representantes);
+            var result = _repo.GetAllRepresentantes(false);
+            return Ok(result);
         }
 
-        
-        //Query String  api/produto/byid?id=1
-        [HttpGet("byId")]
-        public IActionResult QueryStringGetById(int id)
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
         {
-            var representante = _context.Representantes.FirstOrDefault(repre => repre.Id == id);
+            var representante = _repo.GetRepresentanteById(id, false);
             if (representante == null) return BadRequest("Representante não encontrado.");
+
             return Ok(representante);
         }
+        
+        // //Query String  api/produto/byid?id=1
+        // [HttpGet("byId")]
+        // public IActionResult QueryStringGetById(int id)
+        // {
+        //     var representante = _context.Representantes.FirstOrDefault(repre => repre.Id == id);
+        //     if (representante == null) return BadRequest("Representante não encontrado.");
+        //     return Ok(representante);
+        // }
 
-        // byName?nome=Arroz 1Kg&marca=Sepe   
-        [HttpGet("ByName")]
-        public IActionResult GetByName(string nome)
-        {
-            var repre = _context.Representantes.FirstOrDefault(prod => prod.Nome.Contains(nome));
-            if (repre == null) return BadRequest("Produto não encontrado.");
-            return Ok(nome);
-        }
+        // // byName?nome=Arroz 1Kg&marca=Sepe   
+        // [HttpGet("ByName")]
+        // public IActionResult GetByName(string nome)
+        // {
+        //     var repre = _context.Representantes.FirstOrDefault(prod => prod.Nome.Contains(nome));
+        //     if (repre == null) return BadRequest("Produto não encontrado.");
+        //     return Ok(nome);
+        // }
 
         [HttpPost]
         public IActionResult Post(Representante representante)
@@ -65,11 +74,10 @@ namespace GP.WebApi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, Representante representante)
         {
-            var repre = _context.Representantes.AsNoTracking().FirstOrDefault(repre => repre.Id == id);
+            var repre = _repo.GetRepresentanteById(id, false);
             if(repre == null) return BadRequest("Representante não encontrado.");
 
-            _repo.Update(representante);
-
+           _repo.Update(representante);
            if (_repo.SaveChanges())
            {
                  return Ok(representante);
@@ -81,11 +89,10 @@ namespace GP.WebApi.Controllers
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Representante representante)
         {
-            var repre = _context.Representantes.AsNoTracking().FirstOrDefault(repre => repre.Id == id);
+            var repre = _repo.GetRepresentanteById(id, false);
             if(repre == null) return BadRequest("Representante não encontrado.");
 
-            _repo.Update(representante);
-
+           _repo.Update(representante);
            if (_repo.SaveChanges())
            {
                  return Ok(representante);
@@ -97,11 +104,10 @@ namespace GP.WebApi.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var repre = _context.Representantes.FirstOrDefault(repre => repre.Id == id);
+            var repre = _repo.GetRepresentanteById(id, false);
             if(repre == null) return BadRequest("Representante não encontrado.");
             
             _repo.Delete(repre);
-
            if (_repo.SaveChanges())
            {
                  return Ok("Representante deletado.");
