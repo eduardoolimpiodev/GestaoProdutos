@@ -97,7 +97,7 @@ namespace GP.WebApi.Data
             {
                 query = query.Include(rep => rep.Fornecedores)
                             .ThenInclude( prod => prod.ProdutosFornecedores)
-                            .ThenInclude( prod => prod.Fornecedor);
+                            .ThenInclude( prodfor => prodfor.Produto);
             }
 
             query = query.AsNoTracking()
