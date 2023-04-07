@@ -47,18 +47,11 @@ namespace GP.WebApi.Migrations
                     Nome = table.Column<string>(nullable: true),
                     Descricao = table.Column<string>(nullable: true),
                     CNPJ = table.Column<string>(nullable: true),
-                    ProdutoId = table.Column<int>(nullable: false),
                     RepresentanteId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Fornecedores", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Fornecedores_Produtos_ProdutoId",
-                        column: x => x.ProdutoId,
-                        principalTable: "Produtos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Fornecedores_Representantes_RepresentanteId",
                         column: x => x.RepresentanteId,
@@ -153,28 +146,28 @@ namespace GP.WebApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
-                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "ProdutoId", "RepresentanteId" },
-                values: new object[] { 1, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Matemática", 1, 1 });
+                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "RepresentanteId" },
+                values: new object[] { 1, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Matemática", 1 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
-                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "ProdutoId", "RepresentanteId" },
-                values: new object[] { 2, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Física", 2, 2 });
+                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "RepresentanteId" },
+                values: new object[] { 2, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Física", 2 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
-                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "ProdutoId", "RepresentanteId" },
-                values: new object[] { 3, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Português", 3, 3 });
+                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "RepresentanteId" },
+                values: new object[] { 3, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Português", 3 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
-                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "ProdutoId", "RepresentanteId" },
-                values: new object[] { 4, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Inglês", 4, 4 });
+                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "RepresentanteId" },
+                values: new object[] { 4, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Inglês", 4 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
-                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "ProdutoId", "RepresentanteId" },
-                values: new object[] { 5, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Programação", 5, 5 });
+                columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "RepresentanteId" },
+                values: new object[] { 5, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Programação", 5 });
 
             migrationBuilder.InsertData(
                 table: "ProdutosFornecedores",
@@ -290,11 +283,6 @@ namespace GP.WebApi.Migrations
                 table: "ProdutosFornecedores",
                 columns: new[] { "ProdutoId", "FornecedorId" },
                 values: new object[] { 7, 5 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Fornecedores_ProdutoId",
-                table: "Fornecedores",
-                column: "ProdutoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Fornecedores_RepresentanteId",
