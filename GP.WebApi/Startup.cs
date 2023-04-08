@@ -42,7 +42,7 @@ namespace GP.WebApi
 
             services.AddSwaggerGen( options => 
             {
-                options.SwaggerDoc("GestaoProdutos", new Microsoft.OpenApi.Models.OpenApiInfo()
+                options.SwaggerDoc("gestaoprodutosapi", new Microsoft.OpenApi.Models.OpenApiInfo()
                 {   
                     Title = "Gestão Produtos",
                     Version = "1.0",
@@ -78,7 +78,13 @@ namespace GP.WebApi
 
             app.UseRouting();
 
-            app.UseSwagger();
+            app.UseSwagger()
+                .UseSwaggerUI( options => {
+                    options.SwaggerEndpoint("/swagger/gestaoprodutosapi/swagger.json", "gestaoprodutosapi");
+                    options.RoutePrefix = "";
+                });
+
+
             // teste branch1
             //app.UseAuthorization();
 
