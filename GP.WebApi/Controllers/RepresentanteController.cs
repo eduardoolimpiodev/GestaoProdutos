@@ -1,5 +1,8 @@
+using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using GP.WebApi.Data;
+using GP.WebApi.Dtos;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,13 +13,14 @@ namespace GP.WebApi.Controllers
     [Route("api/[controller]")]
     public class RepresentanteController : ControllerBase
     {
-        private readonly DataContext _context;
 
-        public readonly IRepository _repo;
 
-        public RepresentanteController(DataContext context, IRepository repo)
+        private readonly IRepository _repo;
+        private readonly IMapper _mapper;
+
+        public RepresentanteController(IRepository repo, IMapper mapper)
         {
-            _context = context;
+            _mapper = mapper;
             _repo = repo;
 
         }
@@ -25,8 +29,9 @@ namespace GP.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllRepresentantes(true);
-            return Ok(result);
+            var representantes = _repo.GetAllRepresentantes(true);
+
+            return Ok(_mapper.Map<IEnumerable<RepresentanteDto>>(representantes));
         }
 
         [HttpGet("{id}")]
@@ -35,9 +40,11 @@ namespace GP.WebApi.Controllers
             var representante = _repo.GetRepresentanteById(id, false);
             if (representante == null) return BadRequest("Representante não encontrado.");
 
-            return Ok(representante);
+            var representanteDto = _mapper.Map<RepresentanteDto>(representante);
+
+            return Ok(representanteDto);
         }
-        
+
         // //Query String  api/produto/byid?id=1
         // [HttpGet("byId")]
         // public IActionResult QueryStringGetById(int id)
@@ -57,63 +64,68 @@ namespace GP.WebApi.Controllers
         // }
 
         [HttpPost]
-        public IActionResult Post(Representante representante)
+        public IActionResult Post(RepresentanteRegistrarDto model)
         {
+            var representante = _mapper.Map<Representante>(model);
+
             _repo.Add(representante);
+            if (_repo.SaveChanges())
+            {
+                return Created($"/api/representante/{model.Id}", _mapper.Map<RepresentanteDto>(representante));
+            }
 
-           if (_repo.SaveChanges())
-           {
-                 return Ok(representante);
-           }
+            return BadRequest("Representante não cadastrado");
 
-           return BadRequest("Representante não cadastrado.");
 
-            
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Representante representante)
+        public IActionResult Put(int id, RepresentanteRegistrarDto model)
         {
-            var repre = _repo.GetRepresentanteById(id, false);
-            if(repre == null) return BadRequest("Representante não encontrado.");
+            var representante = _repo.GetRepresentanteById(id);
+            if (representante == null) return BadRequest("Representante não encontrado.");
 
-           _repo.Update(representante);
-           if (_repo.SaveChanges())
-           {
-                 return Ok(representante);
-           }
+            _mapper.Map(model, representante);
 
-           return BadRequest("Representante não atualizado.");
+            _repo.Update(representante);
+            if (_repo.SaveChanges())
+            {
+                return Created($"/api/produto/{model.Id}", _mapper.Map<RepresentanteDto>(representante));
+            }
+
+            return BadRequest("Representante não atualizado.");
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Representante representante)
+        public IActionResult Patch(int id, RepresentanteRegistrarDto model)
         {
-            var repre = _repo.GetRepresentanteById(id, false);
-            if(repre == null) return BadRequest("Representante não encontrado.");
+            var representante = _repo.GetRepresentanteById(id);
+            if (representante == null) return BadRequest("Representante não encontrado.");
 
-           _repo.Update(representante);
-           if (_repo.SaveChanges())
-           {
-                 return Ok(representante);
-           }
+            _mapper.Map(model, representante);
 
-           return BadRequest("Representante não atualizado.");
+            _repo.Update(representante);
+            if (_repo.SaveChanges())
+            {
+                return Created($"/api/representante/{model.Id}", _mapper.Map<RepresentanteDto>(representante));
+            }
+
+            return BadRequest("Representante não atualizado.");
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var repre = _repo.GetRepresentanteById(id, false);
-            if(repre == null) return BadRequest("Representante não encontrado.");
-            
-            _repo.Delete(repre);
-           if (_repo.SaveChanges())
-           {
-                 return Ok("Representante deletado.");
-           }
+            var representante = _repo.GetRepresentanteById(id);
+            if (representante == null) return BadRequest("Representante não encontrado.");
 
-           return BadRequest("Representante não deletado.");
+            _repo.Delete(representante);
+            if (_repo.SaveChanges())
+            {
+                return Ok("Representante deletado.");
+            }
+
+            return BadRequest("Representante não deletado.");
         }
 
     }
