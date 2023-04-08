@@ -25,7 +25,7 @@ namespace GP.WebApi.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var result = _repo.GetAllRepresentantes(false);
+            var result = _repo.GetAllRepresentantes(true);
             return Ok(result);
         }
 
