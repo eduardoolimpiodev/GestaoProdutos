@@ -27,7 +27,6 @@ namespace GP.WebApi.Models
         public string Descricao { get; set; }
         public string Peso { get; set; }
         public string Marca { get; set; }
-        public int Validade { get; set; }
         public bool Situacao { get; set; } = true;
         public DateTime DataFabricacao { get; set; } = DateTime.Now;
         public DateTime DataValidade { get; set; }

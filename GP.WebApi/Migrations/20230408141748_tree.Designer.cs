@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GP.WebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230407232519_tree")]
+    [Migration("20230408141748_tree")]
     partial class tree
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
