@@ -49,3 +49,8 @@ C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Newton
 C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\eduar\Documents\GestaoProdutos\GP.WebApi\obj\Debug\netcoreapp3.1\GP.WebApi.MvcApplicationPartsAssemblyInfo.cs
