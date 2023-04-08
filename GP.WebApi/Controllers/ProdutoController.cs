@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GP.WebApi.Data;
+using GP.WebApi.Dtos;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,12 @@ namespace GP.WebApi.Controllers
             var produtos = _repo.GetAllProdutos(true);
 
             return Ok(_mapper.Map<IEnumerable<ProdutoDto>>(produtos));
+        }
+
+        [HttpGet("getRegistrar")]
+        public IActionResult getRegistrar()
+        {
+            return Ok(new ProdutoRegistrarDto());
         }
 
         [HttpGet("{id}")]
@@ -61,7 +68,7 @@ namespace GP.WebApi.Controllers
         // // }
 
         [HttpPost]
-        public IActionResult Post(ProdutoDto model)
+        public IActionResult Post(ProdutoRegistrarDto model)
         {
             var produto = _mapper.Map<Produto>(model);
 
@@ -76,7 +83,7 @@ namespace GP.WebApi.Controllers
 
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, ProdutoDto model)
+        public IActionResult Put(int id, ProdutoRegistrarDto model)
         {
             var produto = _repo.GetProdutoById(id);
             if (produto == null) return BadRequest("Produto não encontrado.");
@@ -94,7 +101,7 @@ namespace GP.WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, ProdutoDto model)
+        public IActionResult Patch(int id, ProdutoRegistrarDto model)
         {
             var produto = _repo.GetProdutoById(id);
             if (produto == null) return BadRequest("Produto não encontrado.");

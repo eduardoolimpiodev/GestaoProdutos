@@ -1,4 +1,5 @@
 using AutoMapper;
+using GP.WebApi.Dtos;
 using GP.WebApi.Models;
 
 namespace GP.WebApi.Helpers
@@ -14,6 +15,7 @@ namespace GP.WebApi.Helpers
                 );
 
             CreateMap<ProdutoDto, Produto>();
+            CreateMap<Produto, ProdutoRegistrarDto>().ReverseMap();
         }
     }
 }
