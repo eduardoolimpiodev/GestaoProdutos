@@ -40,6 +40,30 @@ namespace GP.WebApi
 
             services.AddScoped<IRepository, Repository>();
 
+            services.AddSwaggerGen( options => 
+            {
+                options.SwaggerDoc("GestaoProdutos", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {   
+                    Title = "Gestão Produtos",
+                    Version = "1.0",
+                    TermsOfService = new Uri("https://www.eduardoolimpio.com"),
+                    Description = "Descrição da WebAPI do Gestão Produtos",
+                    License = new Microsoft.OpenApi.Models.OpenApiLicense
+                    {
+                        Name = "Gestão Produtos",
+                        Url = new Uri("https://www.eduardoolimpio.com")
+                    },
+
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Eduardo Olimpio",
+                        Email = "contact@eduardoolimpio.com",
+                        Url = new Uri("https://www.eduardoolimpio.com")
+                    }
+
+                });
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +77,8 @@ namespace GP.WebApi
             //app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseSwagger();
             // teste branch1
             //app.UseAuthorization();
 
