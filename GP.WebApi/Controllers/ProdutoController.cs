@@ -61,27 +61,32 @@ namespace GP.WebApi.Controllers
         // // }
 
         [HttpPost]
-        public IActionResult Post(Produto produto)
+        public IActionResult Post(ProdutoDto model)
         {
-            _repo.Add(produto);
+            var produto = _mapper.Map<Produto>(model);
 
+            _repo.Add(produto);
             if (_repo.SaveChanges())
             {
-                return Ok(produto);
+                return Created($"/api/produto/{model.Id}", _mapper.Map<ProdutoDto>(produto));
             }
 
-            return BadRequest("Produto não cadastrado.");
+            return BadRequest("Aluno não cadastrado");
         }
 
+
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Produto produto)
+        public IActionResult Put(int id, ProdutoDto model)
         {
-            var prod = _repo.GetProdutoById(id);
-            if (prod == null) return BadRequest("Produto não encontrado.");
+            var produto = _repo.GetProdutoById(id);
+            if (produto == null) return BadRequest("Produto não encontrado.");
+
+            _mapper.Map(model, produto);
+
             _repo.Update(produto);
             if (_repo.SaveChanges())
             {
-                return Ok(produto);
+                return Created($"/api/produto/{model.Id}", _mapper.Map<ProdutoDto>(produto));
             }
 
             return BadRequest("Produto não atualizado.");
@@ -89,15 +94,17 @@ namespace GP.WebApi.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Produto produto)
+        public IActionResult Patch(int id, ProdutoDto model)
         {
-            var prod = _repo.GetProdutoById(id);
-            if (prod == null) return BadRequest("Produto não encontrado.");
-            _repo.Update(produto);
+            var produto = _repo.GetProdutoById(id);
+            if (produto == null) return BadRequest("Produto não encontrado.");
 
+            _mapper.Map(model, produto);
+
+            _repo.Update(produto);
             if (_repo.SaveChanges())
             {
-                return Ok(produto);
+                return Created($"/api/produto/{model.Id}", _mapper.Map<ProdutoDto>(produto));
             }
 
             return BadRequest("Produto não atualizado.");

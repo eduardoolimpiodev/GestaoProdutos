@@ -12,7 +12,8 @@ namespace GP.WebApi.Helpers
                     dest => dest.Nome,
                     opt => opt.MapFrom(src => src.Nome)
                 );
-    
+
+            CreateMap<ProdutoDto, Produto>();
         }
     }
 }
