@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GP.WebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230407215428_tree")]
+    [Migration("20230407232519_tree")]
     partial class tree
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,7 +33,7 @@ namespace GP.WebApi.Migrations
                     b.Property<string>("Nome")
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("PedidoId")
+                    b.Property<int>("PedidoId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("RepresentanteId")
@@ -51,10 +51,11 @@ namespace GP.WebApi.Migrations
                         new
                         {
                             Id = 1,
-                            CNPJ = "CNPJ DO FORNECEDOR",
-                            Descricao = "Descrição Fornecedor",
-                            Nome = "Matemática",
-                            RepresentanteId = 1
+                            CNPJ = "12345478998 CNPJ",
+                            Descricao = "Descrição TESTE",
+                            Nome = "Fornecedor",
+                            PedidoId = 1,
+                            RepresentanteId = 2
                         },
                         new
                         {
@@ -62,6 +63,7 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Física",
+                            PedidoId = 1,
                             RepresentanteId = 2
                         },
                         new
@@ -70,6 +72,7 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Português",
+                            PedidoId = 1,
                             RepresentanteId = 3
                         },
                         new
@@ -78,6 +81,7 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Inglês",
+                            PedidoId = 1,
                             RepresentanteId = 4
                         },
                         new
@@ -86,6 +90,7 @@ namespace GP.WebApi.Migrations
                             CNPJ = "CNPJ DO FORNECEDOR",
                             Descricao = "Descrição Fornecedor",
                             Nome = "Programação",
+                            PedidoId = 1,
                             RepresentanteId = 5
                         });
                 });
@@ -161,6 +166,9 @@ namespace GP.WebApi.Migrations
                     b.Property<bool>("Situacao")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("Validade")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
@@ -176,7 +184,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "Marta",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         },
                         new
                         {
@@ -188,7 +197,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "dsdsdsds",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         },
                         new
                         {
@@ -200,7 +210,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "dsdsdsdsd",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         },
                         new
                         {
@@ -212,7 +223,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "cvvcvcvvc",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         },
                         new
                         {
@@ -224,7 +236,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "ddsfsdfdf",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         },
                         new
                         {
@@ -236,7 +249,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "bvcvcgfsg",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         },
                         new
                         {
@@ -248,7 +262,8 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "treteyte",
                             Peso = "500",
-                            Situacao = true
+                            Situacao = true,
+                            Validade = 0
                         });
                 });
 
@@ -443,24 +458,26 @@ namespace GP.WebApi.Migrations
 
             modelBuilder.Entity("GP.WebApi.Models.RepresentantePedido", b =>
                 {
-                    b.Property<int>("PedidoId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("ProdutoId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("PedidoId", "ProdutoId");
+                    b.Property<int>("PedidoId")
+                        .HasColumnType("INTEGER");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasKey("ProdutoId", "PedidoId");
+
+                    b.HasIndex("PedidoId");
 
                     b.ToTable("ProdutosPedidos");
                 });
 
             modelBuilder.Entity("GP.WebApi.Models.Fornecedor", b =>
                 {
-                    b.HasOne("GP.WebApi.Models.Pedido", null)
+                    b.HasOne("GP.WebApi.Models.Pedido", "Pedido")
                         .WithMany("Fornecedores")
-                        .HasForeignKey("PedidoId");
+                        .HasForeignKey("PedidoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("GP.WebApi.Models.Representante", "Representante")
                         .WithMany("Fornecedores")

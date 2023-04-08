@@ -8,13 +8,15 @@ namespace GP.WebApi.Models
         public Fornecedor() { }
 
 
-        public Fornecedor(int id, string nome, string descricao, string cNPJ, int representanteId)
+    
+        public Fornecedor(int id, string nome, string descricao, string cNPJ, int representanteId, int pedidoId)
         {
             this.Id = id;
             this.Nome = nome;
             this.Descricao = descricao;
             this.CNPJ = cNPJ;
             this.RepresentanteId = representanteId;
+            this.PedidoId = pedidoId;
 
         }
         public int Id { get; set; }

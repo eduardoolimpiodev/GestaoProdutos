@@ -21,7 +21,7 @@ namespace GP.WebApi.Data
                 .HasKey(PF => new {PF.ProdutoId, PF.FornecedorId});
 
              builder.Entity<RepresentantePedido>()
-                .HasKey(RP => new {RP.PedidoId, RP.ProdutoId});
+                .HasKey(RP => new {RP.ProdutoId, RP.PedidoId});
                     
                 
 
@@ -45,11 +45,11 @@ namespace GP.WebApi.Data
 
             builder.Entity<Fornecedor>()
                 .HasData(new List<Fornecedor>(){
-                    new Fornecedor(1, "Matemática", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 1),
-                    new Fornecedor(2, "Física", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 2),
-                    new Fornecedor(3, "Português", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 3),
-                    new Fornecedor(4, "Inglês", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 4),
-                    new Fornecedor(5, "Programação", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 5),
+                    new Fornecedor(1, "Fornecedor", "Descrição TESTE", "12345478998 CNPJ", 2, 1),
+                    new Fornecedor(2, "Física", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 2, 1),
+                    new Fornecedor(3, "Português", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 3, 1),
+                    new Fornecedor(4, "Inglês", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 4, 1),
+                    new Fornecedor(5, "Programação", "Descrição Fornecedor", "CNPJ DO FORNECEDOR", 5, 1),
                 });
             
             builder.Entity<Produto>()

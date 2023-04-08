@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper;
 using GP.WebApi.Data;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,9 +14,11 @@ namespace GP.WebApi.Controllers
     public class ProdutoController : ControllerBase
     {
         public readonly IRepository _repo;
+        private readonly IMapper _mapper;
 
-        public ProdutoController(IRepository repo)
+        public ProdutoController(IRepository repo, IMapper mapper)
         {
+            _mapper = mapper;
             _repo = repo;
         }
 
@@ -23,24 +26,8 @@ namespace GP.WebApi.Controllers
         public IActionResult Get()
         {
             var produtos = _repo.GetAllProdutos(true);
-            var produtosRetorno = new List<ProdutoDto>();
 
-            foreach (var produto in produtos)
-            {
-                produtosRetorno.Add(new ProdutoDto(){
-                    Id = produto.Id,
-                    Nome = produto.Nome,
-                    Codigo = produto.Codigo,
-                    Descricao = produto.Descricao,
-                    Peso = produto.Peso,
-                    Marca = produto.Marca,
-                    Situacao = produto.Situacao,
-                    DataFabricacao = produto.DataFabricacao,
-                    DataValidade = produto.DataValidade,
-                });
-            }
-
-            return Ok(produtosRetorno);
+            return Ok(_mapper.Map<IEnumerable<ProdutoDto>>(produtos));
         }
 
         [HttpGet("{id}")]
@@ -48,7 +35,10 @@ namespace GP.WebApi.Controllers
         {
             var produto = _repo.GetProdutoById(id, false);
             if (produto == null) return BadRequest("Produto não encontrado.");
-            return Ok(produto);
+
+            var produtoDto = _mapper.Map<ProdutoDto>(produto);
+
+            return Ok(produtoDto);
         }
 
         //Query String  api/produto/byid?id=1
@@ -75,12 +65,12 @@ namespace GP.WebApi.Controllers
         {
             _repo.Add(produto);
 
-           if (_repo.SaveChanges())
-           {
-                 return Ok(produto);
-           }
+            if (_repo.SaveChanges())
+            {
+                return Ok(produto);
+            }
 
-           return BadRequest("Produto não cadastrado.");
+            return BadRequest("Produto não cadastrado.");
         }
 
         [HttpPut("{id}")]
@@ -89,13 +79,13 @@ namespace GP.WebApi.Controllers
             var prod = _repo.GetProdutoById(id);
             if (prod == null) return BadRequest("Produto não encontrado.");
             _repo.Update(produto);
-            if(_repo.SaveChanges())
+            if (_repo.SaveChanges())
             {
                 return Ok(produto);
             }
 
             return BadRequest("Produto não atualizado.");
-            
+
         }
 
         [HttpPatch("{id}")]
@@ -105,7 +95,7 @@ namespace GP.WebApi.Controllers
             if (prod == null) return BadRequest("Produto não encontrado.");
             _repo.Update(produto);
 
-            if(_repo.SaveChanges())
+            if (_repo.SaveChanges())
             {
                 return Ok(produto);
             }
@@ -118,9 +108,9 @@ namespace GP.WebApi.Controllers
         {
             var produto = _repo.GetProdutoById(id);
             if (produto == null) return BadRequest("Produto não encontrado.");
-            
+
             _repo.Delete(produto);
-            if(_repo.SaveChanges())
+            if (_repo.SaveChanges())
             {
                 return Ok("Produto deletado.");
             }

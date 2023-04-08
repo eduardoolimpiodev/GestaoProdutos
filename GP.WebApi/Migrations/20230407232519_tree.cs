@@ -31,6 +31,7 @@ namespace GP.WebApi.Migrations
                     Descricao = table.Column<string>(nullable: true),
                     Peso = table.Column<string>(nullable: true),
                     Marca = table.Column<string>(nullable: true),
+                    Validade = table.Column<int>(nullable: false),
                     Situacao = table.Column<bool>(nullable: false),
                     DataFabricacao = table.Column<DateTime>(nullable: false),
                     DataValidade = table.Column<DateTime>(nullable: false)
@@ -64,7 +65,7 @@ namespace GP.WebApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProdutosPedidos", x => new { x.PedidoId, x.ProdutoId });
+                    table.PrimaryKey("PK_ProdutosPedidos", x => new { x.ProdutoId, x.PedidoId });
                     table.ForeignKey(
                         name: "FK_ProdutosPedidos_Pedidos_PedidoId",
                         column: x => x.PedidoId,
@@ -89,7 +90,7 @@ namespace GP.WebApi.Migrations
                     Descricao = table.Column<string>(nullable: true),
                     CNPJ = table.Column<string>(nullable: true),
                     RepresentanteId = table.Column<int>(nullable: false),
-                    PedidoId = table.Column<int>(nullable: true)
+                    PedidoId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -99,7 +100,7 @@ namespace GP.WebApi.Migrations
                         column: x => x.PedidoId,
                         principalTable: "Pedidos",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Fornecedores_Representantes_RepresentanteId",
                         column: x => x.RepresentanteId,
@@ -159,38 +160,38 @@ namespace GP.WebApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 7, 654, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 07", "MARCA", "treteyte", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 7, 654, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 07", "MARCA", "treteyte", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 6, 98, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 06", "MARCA", "bvcvcgfsg", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 6, 98, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 06", "MARCA", "bvcvcgfsg", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 5, 365, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 05", "MARCA", "ddsfsdfdf", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 5, 365, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 05", "MARCA", "ddsfsdfdf", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 4, 121, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 04", "MARCA", "cvvcvcvvc", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 4, 121, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 04", "MARCA", "cvvcvcvvc", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 3, 789, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 03", "MARCA", "dsdsdsdsd", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 3, 789, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 03", "MARCA", "dsdsdsdsd", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 2, 456, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 02", "MARCA", "dsdsdsds", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 2, 456, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 02", "MARCA", "dsdsdsds", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
-                values: new object[] { 1, 23, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 01", "MARCA", "Marta", "500", true });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
+                values: new object[] { 1, 23, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 01", "MARCA", "Marta", "500", true, 0 });
 
             migrationBuilder.InsertData(
                 table: "Representantes",
@@ -220,27 +221,27 @@ namespace GP.WebApi.Migrations
             migrationBuilder.InsertData(
                 table: "Fornecedores",
                 columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "PedidoId", "RepresentanteId" },
-                values: new object[] { 1, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Matemática", null, 1 });
+                values: new object[] { 1, "12345478998 CNPJ", "Descrição TESTE", "Fornecedor", 1, 2 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
                 columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "PedidoId", "RepresentanteId" },
-                values: new object[] { 2, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Física", null, 2 });
+                values: new object[] { 2, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Física", 1, 2 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
                 columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "PedidoId", "RepresentanteId" },
-                values: new object[] { 3, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Português", null, 3 });
+                values: new object[] { 3, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Português", 1, 3 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
                 columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "PedidoId", "RepresentanteId" },
-                values: new object[] { 4, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Inglês", null, 4 });
+                values: new object[] { 4, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Inglês", 1, 4 });
 
             migrationBuilder.InsertData(
                 table: "Fornecedores",
                 columns: new[] { "Id", "CNPJ", "Descricao", "Nome", "PedidoId", "RepresentanteId" },
-                values: new object[] { 5, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Programação", null, 5 });
+                values: new object[] { 5, "CNPJ DO FORNECEDOR", "Descrição Fornecedor", "Programação", 1, 5 });
 
             migrationBuilder.InsertData(
                 table: "ProdutosFornecedores",
@@ -373,9 +374,9 @@ namespace GP.WebApi.Migrations
                 column: "FornecedorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProdutosPedidos_ProdutoId",
+                name: "IX_ProdutosPedidos_PedidoId",
                 table: "ProdutosPedidos",
-                column: "ProdutoId");
+                column: "PedidoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
