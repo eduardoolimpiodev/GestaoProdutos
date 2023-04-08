@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using AutoMapper;
 using GP.WebApi.Data;
@@ -62,6 +64,11 @@ namespace GP.WebApi
                     }
 
                 });
+
+                var xmlComentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlComentsFullPath = Path.Combine(AppContext.BaseDirectory, xmlComentsFile);
+
+                options.IncludeXmlComments(xmlComentsFullPath);
             });
 
         }

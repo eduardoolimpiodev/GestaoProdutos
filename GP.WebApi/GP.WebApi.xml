@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GP.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:GP.WebApi.Controllers.ProdutoController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:GP.WebApi.Controllers.ProdutoController.#ctor(GP.WebApi.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:GP.WebApi.Controllers.ProdutoController.Get">
+            <summary>
+            Método responsável por retornar todos os meus produtos.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GP.WebApi.Controllers.ProdutoController.getRegistrar">
+            <summary>
+            Método responsável por retornar apenas um único Produto Dto
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GP.WebApi.Controllers.ProdutoController.GetById(System.Int32)">
+            <summary>
+            Método responsável para retornar apenas um único produto por meio de Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GP.WebApi.Dtos.ProdutoRegistrarDto">
+            <summary>
+            Este é o Dto de Produto para registrar.
+            </summary>
+        </member>
+        <member name="P:GP.WebApi.Dtos.ProdutoRegistrarDto.Id">
+            <summary>
+            Identificador e chave do banco.
+            </summary>
+        </member>
+        <member name="P:GP.WebApi.Dtos.ProdutoRegistrarDto.Nome">
+            <summary>
+            Nome do produto.
+            </summary>
+        </member>
+    </members>
+</doc>

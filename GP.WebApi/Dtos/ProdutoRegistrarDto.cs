@@ -4,9 +4,18 @@ using GP.WebApi.Models;
 
 namespace GP.WebApi.Dtos
 {
+    /// <summary>
+    /// Este é o Dto de Produto para registrar.
+    /// </summary>
     public class ProdutoRegistrarDto
     {
+        /// <summary>
+        /// Identificador e chave do banco.
+        /// </summary>
         public int Id { get; set; }
+        /// <summary>
+        /// Nome do produto.
+        /// </summary>
         public string Nome { get; set; }
         public int Codigo { get; set; }
         public string Descricao { get; set; }
