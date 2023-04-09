@@ -1,3 +1,4 @@
+using System.Globalization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GP.WebApi.V1.Models;
 using System.Threading.Tasks;
+using GP.WebApi.Helpers;
 
 namespace GP.WebApi.V1.Controllers
 {
@@ -39,11 +41,15 @@ namespace GP.WebApi.V1.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery]PageParams pageParams)
         {
-            var produtos = await _repo.GetAllProdutosAsync(true);
+            var produtos = await _repo.GetAllProdutosAsync(pageParams, true);
 
-            return Ok(_mapper.Map<IEnumerable<ProdutoDto>>(produtos));
+            var produtosResult = _mapper.Map<IEnumerable<ProdutoDto>>(produtos);
+
+            Response.AddPagination(produtos.CurrentPage, produtos.PageSize, produtos.TotalCount, produtos.TotalPages);
+
+            return Ok(produtosResult);
         }
 
 

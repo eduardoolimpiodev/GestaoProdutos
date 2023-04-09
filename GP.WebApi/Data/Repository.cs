@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GP.WebApi.Helpers;
 using GP.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -35,7 +37,7 @@ namespace GP.WebApi.Data
 
 
         //Produto
-        public async Task<Produto[]> GetAllProdutosAsync(bool includeRepresentante = false)
+        public async Task<PageList<Produto>> GetAllProdutosAsync(PageParams pageParams, bool includeRepresentante = false)
         {
             IQueryable<Produto> query = _context.Produtos;
 
@@ -49,7 +51,8 @@ namespace GP.WebApi.Data
 
             query = query.AsNoTracking().OrderBy( prod => prod.Id);
 
-            return await query.ToArrayAsync();
+            //return await query.ToListAsync();
+            return await PageList<Produto>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
         //Produto
