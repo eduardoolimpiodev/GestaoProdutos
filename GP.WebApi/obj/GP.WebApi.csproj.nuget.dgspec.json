@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebApi\\GP.WebApi.csproj": {}
+    "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebAPI\\GP.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebApi\\GP.WebApi.csproj": {
+    "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebAPI\\GP.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebApi\\GP.WebApi.csproj",
+        "projectUniqueName": "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebAPI\\GP.WebApi.csproj",
         "projectName": "GP.WebApi",
-        "projectPath": "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebApi\\GP.WebApi.csproj",
+        "projectPath": "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebAPI\\GP.WebApi.csproj",
         "packagesPath": "C:\\Users\\eduar\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebApi\\obj\\",
+        "outputPath": "C:\\Users\\eduar\\Documents\\GestaoProdutos\\GP.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -42,6 +43,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "AutoMapper.Extensions.Microsoft.DependencyInjection": {
               "target": "Package",

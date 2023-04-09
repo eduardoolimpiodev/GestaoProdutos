@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using GP.WebApi.Models;
 
 namespace GP.WebApi.Data
@@ -13,6 +14,7 @@ namespace GP.WebApi.Data
         bool SaveChanges();
 
         //Produtos
+        Task<Produto[]> GetAllProdutosAsync(bool includeRepresentante = false);
         Produto[] GetAllProdutos(bool includeRepresentante = false);
 
         Produto[] GetAllProdutosByFornecedorId(int fornecedorId, bool includeRepresentante = false);

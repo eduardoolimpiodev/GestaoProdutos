@@ -8,15 +8,14 @@ using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GP.WebApi.V1.Models;
-using System.Threading.Tasks;
 
-namespace GP.WebApi.V1.Controllers
+namespace GP.WebApi.V2.Controllers
 {
     /// <summary>
-    /// Versão 1 do meu controlador de Produtos.
+    /// Versão 2 do meu controlador de Produtos.
     /// </summary>
     [ApiController]
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ProdutoController : ControllerBase
     {
@@ -39,9 +38,9 @@ namespace GP.WebApi.V1.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public IActionResult Get()
         {
-            var produtos = await _repo.GetAllProdutosAsync(true);
+            var produtos = _repo.GetAllProdutos(true);
 
             return Ok(_mapper.Map<IEnumerable<ProdutoDto>>(produtos));
         }

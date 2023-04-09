@@ -31,7 +31,6 @@ namespace GP.WebApi.Migrations
                     Descricao = table.Column<string>(nullable: true),
                     Peso = table.Column<string>(nullable: true),
                     Marca = table.Column<string>(nullable: true),
-                    Validade = table.Column<int>(nullable: false),
                     Situacao = table.Column<bool>(nullable: false),
                     DataFabricacao = table.Column<DateTime>(nullable: false),
                     DataValidade = table.Column<DateTime>(nullable: false)
@@ -160,38 +159,38 @@ namespace GP.WebApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 7, 654, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 07", "MARCA", "treteyte", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 7, 654, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 07", "MARCA", "treteyte", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 6, 98, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 06", "MARCA", "bvcvcgfsg", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 6, 98, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 06", "MARCA", "bvcvcgfsg", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 5, 365, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 05", "MARCA", "ddsfsdfdf", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 5, 365, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 05", "MARCA", "ddsfsdfdf", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 4, 121, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 04", "MARCA", "cvvcvcvvc", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 4, 121, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 04", "MARCA", "cvvcvcvvc", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 3, 789, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 03", "MARCA", "dsdsdsdsd", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 3, 789, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 03", "MARCA", "dsdsdsdsd", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 2, 456, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 02", "MARCA", "dsdsdsds", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 2, 456, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 02", "MARCA", "dsdsdsds", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Produtos",
-                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao", "Validade" },
-                values: new object[] { 1, 23, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 01", "MARCA", "Marta", "500", true, 0 });
+                columns: new[] { "Id", "Codigo", "DataFabricacao", "DataValidade", "Descricao", "Marca", "Nome", "Peso", "Situacao" },
+                values: new object[] { 1, 23, new DateTime(2023, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 4, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "Descrição 01", "MARCA", "Marta", "500", true });
 
             migrationBuilder.InsertData(
                 table: "Representantes",

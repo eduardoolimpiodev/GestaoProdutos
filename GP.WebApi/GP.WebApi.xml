@@ -6,7 +6,7 @@
     <members>
         <member name="T:GP.WebApi.V1.Controllers.ProdutoController">
             <summary>
-            
+            Versão 1 do meu controlador de Produtos.
             </summary>
         </member>
         <member name="M:GP.WebApi.V1.Controllers.ProdutoController.#ctor(GP.WebApi.Data.IRepository,AutoMapper.IMapper)">
@@ -19,12 +19,6 @@
         <member name="M:GP.WebApi.V1.Controllers.ProdutoController.Get">
             <summary>
             Método responsável por retornar todos os meus produtos.
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:GP.WebApi.V1.Controllers.ProdutoController.getRegistrar">
-            <summary>
-            Método responsável por retornar apenas um único Produto Dto
             </summary>
             <returns></returns>
         </member>
@@ -46,6 +40,51 @@
             </summary>
         </member>
         <member name="P:GP.WebApi.V1.Dtos.ProdutoRegistrarDto.Nome">
+            <summary>
+            Nome do produto.
+            </summary>
+        </member>
+        <member name="T:GP.WebApi.v1.Controllers.RepresentanteController">
+            <summary>
+            Versão 1 do meu controlador de Representante.
+            </summary>
+        </member>
+        <member name="T:GP.WebApi.V2.Controllers.ProdutoController">
+            <summary>
+            Versão 2 do meu controlador de Produtos.
+            </summary>
+        </member>
+        <member name="M:GP.WebApi.V2.Controllers.ProdutoController.#ctor(GP.WebApi.Data.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:GP.WebApi.V2.Controllers.ProdutoController.Get">
+            <summary>
+            Método responsável por retornar todos os meus produtos.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:GP.WebApi.V2.Controllers.ProdutoController.GetById(System.Int32)">
+            <summary>
+            Método responsável para retornar apenas um único produto por meio de Id.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:GP.WebApi.V2.Dtos.ProdutoRegistrarDto">
+            <summary>
+            Este � o Dto de Produto para registrar.
+            </summary>
+        </member>
+        <member name="P:GP.WebApi.V2.Dtos.ProdutoRegistrarDto.Id">
+            <summary>
+            Identificador e chave do banco.
+            </summary>
+        </member>
+        <member name="P:GP.WebApi.V2.Dtos.ProdutoRegistrarDto.Nome">
             <summary>
             Nome do produto.
             </summary>
