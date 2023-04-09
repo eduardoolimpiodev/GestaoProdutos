@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace GP.WebApi.Models
+namespace GP.WebApi.V1.Models
 {
     
     public class ProdutoDto

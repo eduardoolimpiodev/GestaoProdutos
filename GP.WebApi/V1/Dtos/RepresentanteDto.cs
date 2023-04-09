@@ -1,15 +1,13 @@
 using System;
 using System.Collections.Generic;
-using GP.WebApi.Models;
 
-namespace GP.WebApi.Dtos
+namespace GP.WebApi.V1.Models
 {
-    public class RepresentanteRegistrarDto
+    public class RepresentanteDto
     {
+        
         public int Id { get; set; }
         public string Nome { get; set; }
-        public string Telefone { get; set; }
         public int FornecedorId { get; set; }
-        
     }
 }

@@ -1,6 +1,8 @@
 using AutoMapper;
-using GP.WebApi.Dtos;
+using GP.WebApi.V1.Dtos;
 using GP.WebApi.Models;
+using GP.WebApi.V1.Dtos;
+using GP.WebApi.V1.Models;
 
 namespace GP.WebApi.Helpers
 {

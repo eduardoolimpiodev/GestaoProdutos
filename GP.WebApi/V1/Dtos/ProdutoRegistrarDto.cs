@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using GP.WebApi.Models;
 
-namespace GP.WebApi.Dtos
+namespace GP.WebApi.V1.Dtos
 {
     /// <summary>
-    /// Este é o Dto de Produto para registrar.
+    /// Este ï¿½ o Dto de Produto para registrar.
     /// </summary>
     public class ProdutoRegistrarDto
     {
