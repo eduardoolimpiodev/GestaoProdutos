@@ -10,6 +10,9 @@ using GP.WebApi.V1.Models;
 
 namespace GP.WebApi.v1.Controllers
 {
+    /// <summary>
+    /// Versão 1 do meu controlador de Representante.
+    /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]

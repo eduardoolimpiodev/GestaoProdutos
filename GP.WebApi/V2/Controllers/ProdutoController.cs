@@ -9,13 +9,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GP.WebApi.V1.Models;
 
-namespace GP.WebApi.V1.Controllers
+namespace GP.WebApi.V2.Controllers
 {
     /// <summary>
-    /// Versão 1 do meu controlador de Produtos.
+    /// Versão 2 do meu controlador de Produtos.
     /// </summary>
     [ApiController]
-    [ApiVersion("1.0")]
+    [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     public class ProdutoController : ControllerBase
     {
