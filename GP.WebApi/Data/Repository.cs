@@ -51,6 +51,12 @@ namespace GP.WebApi.Data
 
             query = query.AsNoTracking().OrderBy( prod => prod.Id);
 
+            if(!string.IsNullOrEmpty(pageParams.Nome))
+                query = query.Where(produto => produto.Nome.ToUpper().Contains(pageParams.Nome.ToUpper()) || produto.Marca.ToUpper().Contains(pageParams.Nome.ToUpper()));
+
+                if(pageParams.Situacao != null)
+                query = query.Where(produto => produto.Situacao == (pageParams.Situacao != 0));
+
             //return await query.ToListAsync();
             return await PageList<Produto>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }

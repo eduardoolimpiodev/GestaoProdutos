@@ -11,5 +11,11 @@ namespace GP.WebApi.Helpers
             set{ pageSize = (value > MaxPageSize) ? MaxPageSize : value; } 
         }
 
+        public string? Nome { get; set; } = null;
+
+        public string Marca { get; set; } = string.Empty;
+
+        public int? Situacao { get; set; } = null;
+
     }
 }
