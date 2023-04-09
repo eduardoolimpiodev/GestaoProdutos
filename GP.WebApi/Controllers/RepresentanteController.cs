@@ -10,7 +10,8 @@ using Microsoft.EntityFrameworkCore;
 namespace GP.WebApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("2.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class RepresentanteController : ControllerBase
     {
 

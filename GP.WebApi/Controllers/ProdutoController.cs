@@ -14,7 +14,8 @@ namespace GP.WebApi.Controllers
     /// 
     /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ProdutoController : ControllerBase
     {
         public readonly IRepository _repo;
