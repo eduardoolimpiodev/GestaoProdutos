@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using GP.WebApi.Helpers;
 using GP.WebApi.Models;
 
 namespace GP.WebApi.Data
@@ -12,9 +14,7 @@ namespace GP.WebApi.Data
         void Delete<T>(T entity) where T : class;
 
         bool SaveChanges();
-
-        //Produtos
-        Task<Produto[]> GetAllProdutosAsync(bool includeRepresentante = false);
+        Task<PageList<Produto>> GetAllProdutosAsync(PageParams pageParams, bool includeRepresentante = false);
         Produto[] GetAllProdutos(bool includeRepresentante = false);
 
         Produto[] GetAllProdutosByFornecedorId(int fornecedorId, bool includeRepresentante = false);
