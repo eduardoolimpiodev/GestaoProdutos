@@ -8,6 +8,7 @@ using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GP.WebApi.V1.Models;
+using System.Threading.Tasks;
 
 namespace GP.WebApi.V1.Controllers
 {
@@ -38,9 +39,9 @@ namespace GP.WebApi.V1.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            var produtos = _repo.GetAllProdutos(true);
+            var produtos = await _repo.GetAllProdutosAsync(true);
 
             return Ok(_mapper.Map<IEnumerable<ProdutoDto>>(produtos));
         }

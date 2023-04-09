@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using GP.WebApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -32,6 +33,24 @@ namespace GP.WebApi.Data
            return (_context.SaveChanges() > 0);
         }
 
+
+        //Produto
+        public async Task<Produto[]> GetAllProdutosAsync(bool includeRepresentante = false)
+        {
+            IQueryable<Produto> query = _context.Produtos;
+
+            if (includeRepresentante)
+            {
+                query = query.Include(produto => produto.ProdutosFornecedores)
+                             .ThenInclude( prod => prod.Fornecedor)
+                             .ThenInclude( forne => forne.Representante);
+                            
+            }
+
+            query = query.AsNoTracking().OrderBy( prod => prod.Id);
+
+            return await query.ToArrayAsync();
+        }
 
         //Produto
         public Produto[] GetAllProdutos(bool includeRepresentante = false)
