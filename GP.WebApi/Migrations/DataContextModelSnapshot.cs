@@ -164,9 +164,6 @@ namespace GP.WebApi.Migrations
                     b.Property<bool>("Situacao")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Validade")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Id");
 
                     b.ToTable("Produtos");
@@ -182,8 +179,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "Marta",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         },
                         new
                         {
@@ -195,8 +191,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "dsdsdsds",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         },
                         new
                         {
@@ -208,8 +203,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "dsdsdsdsd",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         },
                         new
                         {
@@ -221,8 +215,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "cvvcvcvvc",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         },
                         new
                         {
@@ -234,8 +227,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "ddsfsdfdf",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         },
                         new
                         {
@@ -247,8 +239,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "bvcvcgfsg",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         },
                         new
                         {
@@ -260,8 +251,7 @@ namespace GP.WebApi.Migrations
                             Marca = "MARCA",
                             Nome = "treteyte",
                             Peso = "500",
-                            Situacao = true,
-                            Validade = 0
+                            Situacao = true
                         });
                 });
 

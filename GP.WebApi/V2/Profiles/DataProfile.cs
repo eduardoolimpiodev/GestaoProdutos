@@ -1,10 +1,12 @@
 using AutoMapper;
-using GP.WebApi.V1.Dtos;
 using GP.WebApi.Models;
-using GP.WebApi.V1.Dtos;
-using GP.WebApi.V1.Models;
+using GP.WebApi.V2.Dtos;
+using GP.WebApi.V2.Models;
 
-namespace GP.WebApi.Helpers
+
+
+
+namespace GP.WebApi.V2.Profiles
 {
     public class DataProfile : Profile
     {
@@ -19,14 +21,6 @@ namespace GP.WebApi.Helpers
             CreateMap<ProdutoDto, Produto>();
             CreateMap<Produto, ProdutoRegistrarDto>().ReverseMap();
 
-            CreateMap<Representante, RepresentanteDto>()
-                .ForMember(
-                    dest => dest.Nome,
-                    opt => opt.MapFrom(src => src.Nome)  
-                );
-
-            CreateMap<RepresentanteDto, Representante>();
-            CreateMap<Representante, RepresentanteRegistrarDto>().ReverseMap();   
         }
     }
 }
