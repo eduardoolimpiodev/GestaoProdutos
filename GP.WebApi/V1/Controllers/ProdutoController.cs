@@ -91,6 +91,11 @@ namespace GP.WebApi.V1.Controllers
         [HttpPost]
         public IActionResult Post(ProdutoRegistrarDto model)
         {
+            if (model.DataFabricacao >= model.DataValidade)
+            {
+                throw new Exception($" Você tentou adicionar um produto com data de fabricação maior do que a data de validade.");
+            }
+
             var produto = _mapper.Map<Produto>(model);
 
             _repo.Add(produto);
@@ -106,6 +111,12 @@ namespace GP.WebApi.V1.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, ProdutoRegistrarDto model)
         {
+
+            if (model.DataFabricacao >= model.DataValidade)
+            {
+                throw new Exception($" Você tentou modificar um produto com data de fabricação maior do que a data de validade.");
+            }
+   
             var produto = _repo.GetProdutoById(id);
             if (produto == null) return BadRequest("Produto não encontrado.");
 
