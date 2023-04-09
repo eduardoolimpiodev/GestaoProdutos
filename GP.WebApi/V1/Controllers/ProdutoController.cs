@@ -3,26 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GP.WebApi.Data;
-using GP.WebApi.Dtos;
+using GP.WebApi.V1.Dtos;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using GP.WebApi.V1.Models;
 
-namespace GP.WebApi.Controllers
+namespace GP.WebApi.V1.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class ProdutoController : ControllerBase
     {
         public readonly IRepository _repo;
         private readonly IMapper _mapper;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repo"></param>
+        /// <param name="mapper"></param>
         public ProdutoController(IRepository repo, IMapper mapper)
         {
             _mapper = mapper;
             _repo = repo;
         }
 
+        /// <summary>
+        /// Método responsável por retornar todos os meus produtos.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -31,12 +45,21 @@ namespace GP.WebApi.Controllers
             return Ok(_mapper.Map<IEnumerable<ProdutoDto>>(produtos));
         }
 
+        /// <summary>
+        /// Método responsável por retornar apenas um único Produto Dto
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("getRegistrar")]
         public IActionResult getRegistrar()
         {
             return Ok(new ProdutoRegistrarDto());
         }
 
+        /// <summary>
+        /// Método responsável para retornar apenas um único produto por meio de Id.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {

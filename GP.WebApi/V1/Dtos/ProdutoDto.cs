@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
 
-namespace GP.WebApi.Models
+namespace GP.WebApi.V1.Models
 {
+    
     public class ProdutoDto
     {
-        
         public int Id { get; set; }
         public string Nome { get; set; }
         public int Codigo { get; set; }

@@ -2,15 +2,17 @@ using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using GP.WebApi.Data;
-using GP.WebApi.Dtos;
+using GP.WebApi.V1.Dtos;
 using GP.WebApi.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using GP.WebApi.V1.Models;
 
-namespace GP.WebApi.Controllers
+namespace GP.WebApi.v1.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class RepresentanteController : ControllerBase
     {
 
