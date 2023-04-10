@@ -23,7 +23,9 @@ namespace GP.WebApi.Data
              builder.Entity<RepresentantePedido>()
                 .HasKey(RP => new {RP.ProdutoId, RP.PedidoId});
                     
-                
+            //Soft Delete - Deleção Lógica        
+            builder.Entity<Produto>()
+                .HasQueryFilter(prod => prod.Situacao);    
 
             builder.Entity<Representante>()
                 .HasData(new List<Representante>(){

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using GP.WebApi.Helpers;
 using GP.WebApi.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GP.WebApi.Data
 {
@@ -14,6 +15,7 @@ namespace GP.WebApi.Data
         void Delete<T>(T entity) where T : class;
 
         bool SaveChanges();
+        
         Task<PageList<Produto>> GetAllProdutosAsync(PageParams pageParams, bool includeRepresentante = false);
         Produto[] GetAllProdutos(bool includeRepresentante = false);
 
