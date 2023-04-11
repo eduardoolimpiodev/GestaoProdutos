@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GP.WebApi.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20230409010921_tree")]
-    partial class tree
+    [Migration("20230411001913_initMysql")]
+    partial class initMysql
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

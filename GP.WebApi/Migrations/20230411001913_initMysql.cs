@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace GP.WebApi.Migrations
 {
-    public partial class tree : Migration
+    public partial class initMysql : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
