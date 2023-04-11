@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@angular/cli": "^10.0.0-next.0",
     "mssql": "^9.1.1"
   }
 }
